@@ -1,0 +1,67 @@
+@primaryFontColor: #ffffff;
+body {
+  background: #0e1118;
+  overflow-x: hidden;
+  color: @primaryFontColor;
+  font-family: 'Karla', sans-serif;
+}
+:root {
+  --primary: #fff;
+  --secondary: #64676d;
+  --line: #22252e;
+  --neutralAlt: #1b1d23;
+  --neutral: #0e1118;
+  --overlay: #0e1118;
+  --brandAlt: #0da098;
+  --brand: #ff5c28;
+  color-scheme: dark;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: @primaryFontColor;
+}
+
+// tabs
+.ant-tabs-top > .ant-tabs-nav::before,
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
+  border: 0;
+}
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
+  border-top: 2px solid transparent;
+}
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active {
+  border-top: 2px solid #ffc000;
+}
+// tabs
+
+// table
+tr.ant-table-expanded-row > td {
+  padding: 0;
+  background-color: transparent;
+}
+tr.ant-table-expanded-row:hover > td {
+  background-color: unset;
+}
+.ant-table-tbody > tr > td > .ant-table-wrapper:only-child .ant-table {
+  margin: 0;
+}
+.ant-table-column-sorters {
+  justify-content: left;
+}
+.ant-table-column-title {
+  flex: unset;
+}
+.ant-table-thead > tr > th {
+  padding: 10px 16px;
+}
+.ant-table-row-expand-icon {
+  opacity: 0;
+}
+.ant-table-tbody > tr > td.ant-table-cell-row-hover .ant-table-row-expand-icon {
+  opacity: 1;
+}
+// table
