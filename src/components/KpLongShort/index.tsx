@@ -74,7 +74,7 @@ const KpLongShort = (props: any) => {
         </div>
         <div style={{ padding: '5px 0' }}>
           <span style={{ display: 'flex', color: 'rgba(255, 255, 255, 0.4)' }}>
-            Future Token
+            Future
           </span>
           <KpTokenSelect
             onSelectToken={onSelectFutureToken}

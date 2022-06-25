@@ -59,6 +59,7 @@ const Page = () => {
   };
   console.log('margin, chainid: ', chainId);
   console.log('margin, tokenlist ', getTokenList(chainId));
+
   return (
     <div className={styles.market}>
       <Row>
