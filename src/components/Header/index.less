@@ -1,0 +1,68 @@
+.header {
+  padding: 0 150px;
+  border-bottom: 1px solid var(--line);
+
+  :global {
+    .ant-menu.ant-menu-dark .ant-menu-item-selected,
+    .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected,
+    .ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
+      background-color: transparent;
+    }
+  }
+
+  .connect {
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid #333333;
+    border-radius: 5px;
+    font-weight: 400;
+    padding: 0 30px;
+    line-height: 30px;
+    margin-top: -4px;
+    margin-left: 11px;
+  }
+}
+.witem {
+  .title {
+    font-size: 12px;
+    color: #b5b5b6;
+    display: flex;
+    align-items: center;
+  }
+
+  .tokenBox {
+    height: 45px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    margin: 5px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    &:hover {
+      border: 1px solid #ffc000;
+      color: #ffffff;
+      cursor: pointer;
+    }
+    img {
+      width: 20px;
+      margin-right: 10px;
+    }
+    .checked {
+      display: none;
+      position: absolute;
+      right: 1px;
+      bottom: 1px;
+    }
+  }
+  .tokenChecked {
+    border: 1px solid #ffc000;
+    color: #ffffff;
+    .checked {
+      color: #ffc000;
+      display: block;
+    }
+  }
+}
