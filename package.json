@@ -1,17 +1,52 @@
 {
   "private": true,
   "scripts": {
-    "dev": "umi dev",
+    "start": "umi dev",
     "build": "umi build",
-    "postinstall": "umi setup",
-    "start": "npm run dev"
+    "postinstall": "umi generate tmp",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
   },
   "dependencies": {
-    "umi": "^3.5.24"
+    "@ant-design/icons": "^4.7.0",
+    "@ethersproject/address": "^5.5.0",
+    "@ethersproject/bignumber": "^5.5.0",
+    "@ethersproject/contracts": "^5.5.0",
+    "@ethersproject/providers": "^5.5.0",
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/walletconnect-connector": "^6.2.13",
+    "antd": "^4.20.6",
+    "binance-api-node": "^0.11.40",
+    "echarts": "^5.3.2",
+    "echarts-for-react": "^3.0.2",
+    "lightweight-charts": "^3.8.0",
+    "lodash-decorators": "^6.0.1",
+    "react": "17.x",
+    "react-dom": "17.x",
+    "umi": "^3.5.24",
+    "web3": "^1.7.4"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "typescript": "^4.1.2"
+    "@umijs/preset-react": "1.x",
+    "@umijs/test": "^3.5.24",
+    "lint-staged": "^10.0.7",
+    "prettier": "^2.2.0",
+    "typescript": "^4.1.2",
+    "yorkie": "^2.0.0"
   }
 }
