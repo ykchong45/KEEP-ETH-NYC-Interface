@@ -111,15 +111,22 @@ const Header = () => {
               lineHeight: '64px',
               marginLeft: '24px',
               transform: 'translateY(-1px)',
+              background: 'transparent',
             }}
           >
-            <Menu.Item key="1" onClick={() => history.push('/')}>
+            <Menu.Item key="0" onClick={() => history.push('/')}>
+              Protocol
+            </Menu.Item>
+
+            <Menu.Item key="1" onClick={() => history.push('/Market')}>
               Market
             </Menu.Item>
 
             <Menu.Item key="2" onClick={() => history.push('/Margin')}>
               Margin
             </Menu.Item>
+
+            <Menu.Item key="4">Docs</Menu.Item>
           </Menu>
         </Col>
         <div

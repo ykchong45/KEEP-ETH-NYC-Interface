@@ -71,8 +71,7 @@ export const readState = async (
   functionName,
   args,
 ) => {
-  console.log('DEBUGGING');
-  console.log(library, contractAddr, functionName, args);
+  console.log('DEBUGGING', library, contractAddr, functionName, args);
   let value = undefined;
   let contract = getContract(contractAddr, abi, library);
 

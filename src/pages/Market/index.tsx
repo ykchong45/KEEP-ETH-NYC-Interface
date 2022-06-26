@@ -28,6 +28,7 @@ import {
 import styles from './index.less';
 import { getTokenList } from '@/constants';
 import usePriceFeed from '@/components/Covalent';
+import MarketDashboard from '@/components/KpMarketDashboard';
 const { TabPane } = Tabs;
 
 const Page = (props) => {
@@ -198,36 +199,39 @@ const Page = (props) => {
                 </Tabs>
               </div>
               {(key == '1' && (
-                <Table
-                  style={{ border: '1px solid #1b1d23' }}
-                  columns={columns}
-                  dataSource={marketData}
-                  expandedRowKeys={expandedRowKeys}
-                  onExpand={onTableRowExpand}
-                  expandable={{
-                    expandRowByClick: true,
-                    expandedRowRender: (record1) => (
-                      <div style={{ background: '#1b1d23' }}>
-                        <KpChildTable
-                          style={{ margin: '0' }}
-                          columns={childColumns}
-                          showHeader={false}
-                          pagination={false}
-                          dataSource={poolData}
-                          onRow={(record2) => {
-                            return {
-                              onClick: (event) => {
-                                setR1(record1);
-                                setR2(record2);
-                              }, // 点击行
-                            };
-                          }}
-                        />
-                      </div>
-                    ),
-                  }}
-                  pagination={false}
-                />
+                <>
+                  <Table
+                    style={{ border: '1px solid #1b1d23' }}
+                    columns={columns}
+                    dataSource={marketData}
+                    expandedRowKeys={expandedRowKeys}
+                    onExpand={onTableRowExpand}
+                    expandable={{
+                      expandRowByClick: true,
+                      expandedRowRender: (record1) => (
+                        <div style={{ background: '#1b1d23' }}>
+                          <KpChildTable
+                            style={{ margin: '0' }}
+                            columns={childColumns}
+                            showHeader={false}
+                            pagination={false}
+                            dataSource={poolData}
+                            onRow={(record2) => {
+                              return {
+                                onClick: (event) => {
+                                  setR1(record1);
+                                  setR2(record2);
+                                }, // 点击行
+                              };
+                            }}
+                          />
+                        </div>
+                      ),
+                    }}
+                    pagination={false}
+                  />
+                  <MarketDashboard />
+                </>
               )) || (
                 <Table
                   style={{ border: '1px solid #1b1d23' }}

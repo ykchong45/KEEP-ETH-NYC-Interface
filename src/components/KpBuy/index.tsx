@@ -60,16 +60,19 @@ const KpTotal = (props: any) => {
       console.log('kpbuy, r2 name: ', poolAddr, chainId);
       approve(chainId, library, account, dataSource.r1.name, poolAddr);
     } else {
+      const token = getToken(chainId, dataSource.r1.name);
+      const parsedAmount = parseUnits(
+        inputVal || `0`,
+        token.decimals,
+      ).toString();
       if (TabRef.current == 'Supply') {
         const poolName = dataSource.r2.name;
-        const token = getToken(chainId, dataSource.r1.name);
         const poolAddr = getPoolAddr(poolName);
         console.log(LendingPool);
-        // const parsedAmount = parseUnits('1',18).toString();
         withConfirmation(
           performTx(library, LendingPool.abi, account, poolAddr, 'deposit', [
             token.address,
-            inputVal,
+            parsedAmount,
             account,
           ]),
         ).then(() => {
@@ -77,14 +80,41 @@ const KpTotal = (props: any) => {
         });
       } else if (TabRef.current == 'Borrow') {
         const poolName = dataSource.r2.name;
-        const token = getToken(chainId, dataSource.r1.name);
+        const poolAddr = getPoolAddr(poolName);
+        console.log(LendingPool);
+        withConfirmation(
+          performTx(library, LendingPool.abi, account, poolAddr, 'borrow', [
+            token.address,
+            parsedAmount,
+            2,
+            account,
+          ]),
+        ).then(() => {
+          console.log('Transaction done');
+        });
+      } else if (TabRef.current == 'Withdraw') {
+        const poolName = dataSource.r2.name;
         const poolAddr = getPoolAddr(poolName);
         console.log(LendingPool);
         // const parsedAmount = parseUnits(`${inputVal}`,decimals).toString();
         withConfirmation(
-          performTx(library, LendingPool.abi, account, poolAddr, 'borrow', [
+          performTx(library, LendingPool.abi, account, poolAddr, 'withdraw', [
             token.address,
-            inputVal,
+            parsedAmount,
+            account,
+          ]),
+        ).then(() => {
+          console.log('Transaction done');
+        });
+      } else if (TabRef.current == 'Repay') {
+        const poolName = dataSource.r2.name;
+        const poolAddr = getPoolAddr(poolName);
+        console.log(LendingPool);
+        // const parsedAmount = parseUnits(`${inputVal}`,decimals).toString();
+        withConfirmation(
+          performTx(library, LendingPool.abi, account, poolAddr, 'repay', [
+            token.address,
+            parsedAmount,
             2,
             account,
           ]),

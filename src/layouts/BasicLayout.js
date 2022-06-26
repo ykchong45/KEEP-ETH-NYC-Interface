@@ -13,6 +13,8 @@ function getLibrary(provider) {
   return library;
 }
 const BasicLayout = (props) => {
+  const { pathname } = props.location;
+
   return (
     <Web3ReactProvider getLibrary={getLibrary}>
       <Layout style={{ minHeight: '100vh' }}>

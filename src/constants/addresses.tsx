@@ -1,5 +1,5 @@
 export const contractAddrs = {
-  lendingPool: '0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e',
+  dataProvider: '0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2',
 };
 
 export const getContractAddr = (contractName) => contractAddrs[contractName];
