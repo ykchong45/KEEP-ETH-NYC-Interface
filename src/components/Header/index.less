@@ -22,6 +22,15 @@
     margin-left: 11px;
   }
 }
+
+.logoText {
+  font-size: 2rem;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 600;
+  color: #ffc000;
+  padding: 0 0.3em;
+}
+
 .witem {
   .title {
     font-size: 12px;
@@ -41,15 +50,18 @@
     font-size: 14px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 5px;
+
     &:hover {
       border: 1px solid #ffc000;
       color: #ffffff;
       cursor: pointer;
     }
+
     img {
       width: 20px;
       margin-right: 10px;
     }
+
     .checked {
       display: none;
       position: absolute;
@@ -57,9 +69,11 @@
       bottom: 1px;
     }
   }
+
   .tokenChecked {
     border: 1px solid #ffc000;
     color: #ffffff;
+
     .checked {
       color: #ffc000;
       display: block;

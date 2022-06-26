@@ -3,8 +3,7 @@ import { history } from 'umi';
 import { Layout, Menu, Row, Col } from 'antd';
 import { createFromIconfontCN, CheckCircleOutlined } from '@ant-design/icons';
 import KpModal from '@/components/KpModal';
-import { ReactComponent as Logo } from '@/assets/logo.svg';
-import { ReactComponent as Opera } from './Opera.svg';
+import Logo from '@/assets/logo.png';
 import iconjs from './iconfont.js';
 
 import styles from './index.less';
@@ -99,8 +98,9 @@ const Header = () => {
   return (
     <Layout.Header className={styles.header}>
       <Row justify="space-between" align="middle">
-        <Col>
-          <Logo width={100} style={{ verticalAlign: 'middle' }} />
+        <Col style={{ display: 'flex', alignItems: 'center' }}>
+          <span className={styles.logoText}>Keep</span>
+          <img src={Logo} style={{ width: '2.2em' }} />
         </Col>
         <Col style={{ flex: '1' }}>
           <Menu

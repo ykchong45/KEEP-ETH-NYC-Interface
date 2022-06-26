@@ -3,10 +3,10 @@ import { Dropdown, Menu, Space } from 'antd';
 import { useWeb3React } from '@web3-react/core';
 import styles from './index.less';
 import { getNetworks, getDefaultNetwork } from '@/constants';
+import millify from 'millify';
 const menu = (chainId: Number) => {
   const networks = getNetworks();
   const otherNetworks = networks.filter((network) => network.id != chainId);
-  console.log('kprpc: ', otherNetworks, chainId);
   return (
     <div className={styles.marker}>
       <ul>
@@ -32,7 +32,6 @@ const KpTotal = (props: any) => {
   const defaultNetwork = getDefaultNetwork();
   chainId = chainId || defaultNetwork.id;
   const currentNetwork = getNetworks().find((net) => net.id == chainId);
-  console.log('kprpc, chainid: ', chainId);
   return (
     <div className={styles.kt} {...rest}>
       <div className={styles.title}>
@@ -45,7 +44,7 @@ const KpTotal = (props: any) => {
         </div>
       </div>
       <div className={styles.dashboard}>
-        <div className={styles.item}>
+        {/* <div className={styles.item}>
           <div>
             <div></div>
             <div>
@@ -54,12 +53,12 @@ const KpTotal = (props: any) => {
               <span>Total market size</span>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className={styles.item}>
           <div>
             <div></div>
             <div>
-              <span>${props.totalSupply}</span>
+              <span>${millify(props.totalSupply)}</span>
               <br />
               <span>Total supply</span>
             </div>
@@ -69,7 +68,7 @@ const KpTotal = (props: any) => {
           <div>
             <div></div>
             <div>
-              <span>${props.totalBorrows}</span>
+              <span>${millify(props.totalBorrows)}</span>
               <br />
               <span>Total borrows</span>
             </div>

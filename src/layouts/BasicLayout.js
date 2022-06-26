@@ -1,3 +1,4 @@
+import { useState, cloneElement } from 'react';
 import { Web3ReactProvider } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
 import { Layout } from 'antd';
@@ -18,6 +19,7 @@ const BasicLayout = (props) => {
         <Header />
         <Content className={styles.main} style={{ padding: '0 150px' }}>
           {props.children}
+          {/* {cloneElement(props.children, {setVisibleMetaMask: setVisibleMetaMask})} */}
         </Content>
         <Footer />
       </Layout>

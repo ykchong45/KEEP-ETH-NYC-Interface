@@ -21,12 +21,13 @@ const RPC_URLS = {
 
   69: 'https://kovan.optimism.io/',
   80001: 'https://rpc-mumbai.maticvigil.com/',
+  1337: 'http://localhost:8545/',
 };
 const POLLING_INTERVAL = 12000;
 
 // 连接钱包时支持的货币id
 const injected = new InjectedConnector({
-  supportedChainIds: [1, 3, 4, 5, 42, 56, 97, 137, 42161, 69, 80001],
+  supportedChainIds: [1, 3, 4, 5, 42, 56, 97, 137, 42161, 69, 80001, 1337],
   //supportedChainIds: [56, 97, 137, 80001],
   // supportedChainIds: [56, 97],
 });
@@ -41,6 +42,7 @@ const walletconnect = new WalletConnectConnector({
 
     69: RPC_URLS['69'],
     80001: RPC_URLS['80001'],
+    1337: RPC_URLS['1337'],
   },
   //rpc: { 1: RPC_URLS['1']},
   bridge: 'https://pancakeswap.bridge.walletconnect.org/',

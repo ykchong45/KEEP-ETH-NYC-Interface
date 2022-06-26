@@ -26,10 +26,8 @@ const KpLongShort = (props: any) => {
   const [more, setMore] = useState(false);
   const [lm, setLm] = useState(true);
   const { chainId, active, account, activate, deactivate } = useWeb3React();
-  const [val, setVal] = useState(1);
-
-  // 选择token
-  const onChoseToken = (props: any) => {};
+  const [slider, setSlider] = useState(1);
+  const [inputVal, setInputVal] = useState();
 
   // TODO: calculate info
   const [infolistMain, setInfolistMain] = useState([]);
@@ -59,6 +57,17 @@ const KpLongShort = (props: any) => {
   }, [selectedToken]);
   console.log('collateral / future: ', collateralToken, futureToken);
 
+  const printArgs = () => {
+    console.log(
+      'kplongshort, args: ',
+      selectedTab,
+      collateralToken?.name,
+      futureToken?.name,
+      inputVal,
+      slider,
+    );
+  };
+
   return (
     <div className={styles.ki} {...rest}>
       <div style={{ padding: '36px 15px' }}>
@@ -74,7 +83,7 @@ const KpLongShort = (props: any) => {
         </div>
         <div style={{ padding: '5px 0' }}>
           <span style={{ display: 'flex', color: 'rgba(255, 255, 255, 0.4)' }}>
-            Future Token
+            Future
           </span>
           <KpTokenSelect
             onSelectToken={onSelectFutureToken}
@@ -82,7 +91,11 @@ const KpLongShort = (props: any) => {
             icon={futureToken?.icon}
           />
         </div>
-        <KpBigInput placeholder="Collateral Amount" />
+        <KpBigInput
+          placeholder="Collateral Amount"
+          inputVal={inputVal}
+          setInputVal={setInputVal}
+        />
         <>
           <div className={styles.lm}>
             <div style={{ color: 'rgba(255,255,255,0.8)' }}>Leverage Model</div>
@@ -90,9 +103,10 @@ const KpLongShort = (props: any) => {
               <div>
                 <input
                   value={
-                    (typeof val == 'number' && (val * 1).toFixed(1)) || val
+                    (typeof slider == 'number' && (slider * 1).toFixed(1)) ||
+                    slider
                   }
-                  onChange={(e) => setVal(e.target.value)}
+                  onChange={(e) => setSlider(e.target.value)}
                 />
                 <span>x</span>
               </div>
@@ -101,9 +115,9 @@ const KpLongShort = (props: any) => {
           </div>
           {lm && (
             <Slider
-              onChange={(e) => setVal(e)}
+              onChange={(e) => setSlider(e)}
               marks={{ 1: '1x', 2: '2x', 3: '3x', 4: '4x', 5: '5x' }}
-              value={val}
+              value={slider}
               step={0.1}
               min={1}
               max={5}
@@ -114,7 +128,7 @@ const KpLongShort = (props: any) => {
         <KpInfoList dataSource={infolistMain} />
 
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
-          <Button disabled={!active} onClick={() => {}}>
+          <Button disabled={!active} onClick={printArgs}>
             {selectedTab}
           </Button>
         </div>

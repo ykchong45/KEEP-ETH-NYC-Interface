@@ -6,7 +6,7 @@ const client = Binance();
 
 export default function KpPriceChart(props) {
   const [pairName, setPairName] = useState('BTCUSDT');
-  const [latestPrice, setLatestPrice] = useState();
+  const [latestPrice, setLatestPrice] = useState(0);
   useEffect(() => {
     if (props.token) setPairName(`${props.token}USDT`);
   }, [props.token]);
@@ -118,6 +118,7 @@ export default function KpPriceChart(props) {
       console.log(candleData.time, candleData.close);
       candleSeries.current.update(candleData);
       setLatestPrice(res.close);
+      console.log('latestPrice: ', res.close);
     });
     cleaner.current = clean;
     console.log('added new candles subscription for ', pairName);
